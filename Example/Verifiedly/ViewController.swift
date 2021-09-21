@@ -11,28 +11,42 @@ import Verifiedly
 
 
 let verifiedly = Verifiedly()
+//let resultController = verifiedly.resultController
 
 class ViewController: UIViewController {
 
+ 
+    @IBOutlet weak var tokenTxt: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(self.tokenTxt.text)
         
-        verifiedly.verifiedly_key = "1234"
+        verifiedly.app_name = "Padle"
         
-        // Do any additional setup after loading the view, typically from a nib.
+        //VERY IMPORTANT
+        verifiedly.awaitResult()
+        DispatchQueue.main.async {
+            
+            verifiedly.onComplete = { (result) in
+                print(result)
+            
+            }
+            
+            verifiedly.onExit = { (result) in
+                print(result)
+            }
+        }
+       
     }
 
-    
-    override func viewDidAppear(_ animated: Bool) {
- 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
-    
+
     @IBAction func beginVerification(_ sender: Any) {
-        
+        verifiedly.session_id  = self.tokenTxt.text ?? ""
         let vc =  verifiedly.initializeKYC()
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .overFullScreen
         self.present(vc, animated: true, completion: nil)
     }
     
@@ -43,4 +57,5 @@ class ViewController: UIViewController {
     }
 
 }
+
 

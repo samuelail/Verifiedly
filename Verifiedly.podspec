@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Verifiedly'
-  s.version          = '0.1.0'
-  s.summary          = 'Identity verification and fraud prevention for fast growinf startups'
+  s.version          = '1.0.0'
+  s.summary          = 'Identity verification and fraud prevention for fast growing startups'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -29,8 +29,8 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '10.0'
   s.swift_versions = ['4.0']
 
-  #s.source_files = 'Verifiedly/Classes/**/*'
-  #s.resources = 'Verifiedly/Pod/Resources/**/*.{png,storyboard}'
+  s.source_files = 'Resources/*.swift'
+  s.resources = 'Resources/**/*.{png,storyboard,json}'
   
    #s.resource_bundles = {
    #  'Verifiedly' => ['Verifiedly/Resources/*/**']
@@ -41,4 +41,8 @@ Pod::Spec.new do |s|
   s.dependency 'ActiveLabel'
  s.dependency  'Alamofire'
  s.dependency  'SwiftyJSON'
+ s.dependency 'RappleProgressHUD'
+ s.dependency 'SwiftMessages'
+ s.dependency 'SwiftPublicIP'
+ s.dependency 'lottie-ios'
 end
